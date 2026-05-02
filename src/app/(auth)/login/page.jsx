@@ -18,7 +18,7 @@ const LoginPage = () => {
           <button className="btn w-full mt-5 bg-[linear-gradient(130deg,#2F5848,#A77E55)] text-white">Login</button>
         </form>
 
-        <div className="flex  gap-5 mt-5">
+        <div className="flex flex-col md:flex-row gap-5 mt-5">
         <button className="btn bg-white text-green-700"><FaGoogle/>Login with Google</button>
         <button className="btn bg-white"><FaGithub />Login with Github</button>
         </div>

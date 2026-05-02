@@ -1,14 +1,27 @@
-'use client'
+"use client";
 import Link from "next/link";
 import React from "react";
+import { FaHome } from "react-icons/fa";
+import { ImProfile } from "react-icons/im";
+import { IoBookSharp } from "react-icons/io5";
 
 const NavBar = () => {
-
-    const link = <>
-    <Link href="/"><li>Home</li></Link>
-    <Link href="/allbooks"><li>All Books</li></Link>
-    <Link href="/myprofile"><li>My Profile</li></Link>
+  const link = (
+    <>
+      <Link href="/" className="flex gap-1 items-center">
+        <FaHome />
+        <li className="">Home</li>
+      </Link>
+      <Link href="/allbooks" className="flex gap-1 items-center">
+        <IoBookSharp />
+        <li>All Books</li>
+      </Link>
+      <Link href="/myprofile" className="flex gap-1 items-center">
+        <ImProfile />
+        <li>My Profile</li>
+      </Link>
     </>
+  );
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="navbar-start">
@@ -37,15 +50,17 @@ const NavBar = () => {
             {link}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl text-[#2F5848]">BOOK<span className="text-[#A77E55]">NEST</span> </a>
+        <a className="btn btn-ghost text-xl text-[#2F5848]">
+          BOOK<span className="text-[#A77E55]">NEST</span>{" "}
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 gap-4">
-          {link}
-        </ul>
+        <ul className="menu menu-horizontal px-1 gap-4">{link}</ul>
       </div>
       <Link href="/login" className="navbar-end">
-        <p className="btn mt-5 bg-[linear-gradient(130deg,#2F5848,#A77E55)] text-white">Login</p>
+        <p className="btn bg-[linear-gradient(130deg,#2F5848,#A77E55)] text-white">
+          Login
+        </p>
       </Link>
     </div>
   );
