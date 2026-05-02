@@ -8,7 +8,7 @@ const NavLink = ({href, children}) => {
 
     const isActive = pathname == href 
 
-    return <Link className={`${isActive && 'text-green-400'}`} href={href}>{children}</Link>
+    return <Link className={`${isActive && "text-green-500" }`} href={href}>{children}</Link>
 };
 
 export default NavLink;

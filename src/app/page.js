@@ -1,12 +1,9 @@
 import Card from "@/component/shear/Card";
+import { allbooks } from "@/lib/data";
 import Link from "next/link";
 import Marquee from "react-fast-marquee";
 
-const allbooks = async () => {
-  const les = await fetch("https://booknest-server-q5cs.onrender.com/books");
-  const data = await les.json();
-  return data;
-};
+
 
 export default async function Home() {
   const books = await allbooks();
@@ -66,7 +63,7 @@ export default async function Home() {
       <div className="container mx-auto bg-gray-100 rounded-2xl p-10">
         <h2 className="text-3xl font-bold mb-6 text-center">Featured Books</h2>
 
-        <div className="grid grid-cols-4 gap-7">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
           {books.slice(0, 4).map((book) => (
             <Card key={book.id} book={book} />
           ))}

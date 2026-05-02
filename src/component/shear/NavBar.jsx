@@ -5,19 +5,13 @@ import NavLink from "./NavLink";
 
 const NavBar = () => {
   const link = (
-    <>
-      <NavLink href="/">
-        <li>Home</li>
-      </NavLink>
-      <NavLink href="/allbooks">
-        
-        <li>All Books</li>
-      </NavLink>
-      <NavLink href="/myprofile">
-        <li>My Profile</li>
-      </NavLink>
-    </>
-  );
+  <>
+    <li><NavLink href="/">Home</NavLink></li>
+    <li><NavLink href="/allbooks">All Books</NavLink></li>
+    <li><NavLink href="/myprofile">My Profile</NavLink></li>
+  </>
+);
+
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="navbar-start">
@@ -40,8 +34,8 @@ const NavBar = () => {
             </svg>
           </div>
           <ul
-            tabIndex="-1"
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            tabIndex={0}
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow gap-3"
           >
             {link}
           </ul>
