@@ -2,7 +2,7 @@ import { FaGithub, FaGoogle } from "react-icons/fa";
 
 const RegisterPage = () => {
   return (
-    <div className="flex items-center justify-center bg-gray-200 min-h-[80vh] ">
+    <div className="flex items-center justify-center bg-gray-200 min-h-[75vh] ">
       <div className="bg-white p-6 rounded-xl space-y-3">
         <form>
             <fieldset className="fieldset">
