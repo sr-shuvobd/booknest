@@ -1,25 +1,21 @@
 "use client";
 import Link from "next/link";
 import React from "react";
-import { FaHome } from "react-icons/fa";
-import { ImProfile } from "react-icons/im";
-import { IoBookSharp } from "react-icons/io5";
+import NavLink from "./NavLink";
 
 const NavBar = () => {
   const link = (
     <>
-      <Link href="/" className="flex gap-1 items-center">
-        <FaHome />
-        <li className="">Home</li>
-      </Link>
-      <Link href="/allbooks" className="flex gap-1 items-center">
-        <IoBookSharp />
+      <NavLink href="/">
+        <li>Home</li>
+      </NavLink>
+      <NavLink href="/allbooks">
+        
         <li>All Books</li>
-      </Link>
-      <Link href="/myprofile" className="flex gap-1 items-center">
-        <ImProfile />
+      </NavLink>
+      <NavLink href="/myprofile">
         <li>My Profile</li>
-      </Link>
+      </NavLink>
     </>
   );
   return (
@@ -50,9 +46,9 @@ const NavBar = () => {
             {link}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl text-[#2F5848]">
+        <Link href="/" className="btn btn-ghost text-xl text-[#2F5848]">
           BOOK<span className="text-[#A77E55]">NEST</span>{" "}
-        </a>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-4">{link}</ul>
