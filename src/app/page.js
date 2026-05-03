@@ -85,7 +85,7 @@ export default async function Home() {
           Explore Books
         </Link>
       </div>
-
+          
     </div>
   );
 }

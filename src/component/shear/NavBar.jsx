@@ -1,16 +1,28 @@
 "use client";
+
 import Link from "next/link";
 import React from "react";
 import NavLink from "./NavLink";
+import { authClient } from "@/lib/auth-client";
+import Image from "next/image";
 
 const NavBar = () => {
   const link = (
-  <>
-    <li><NavLink href="/">Home</NavLink></li>
-    <li><NavLink href="/allbooks">All Books</NavLink></li>
-    <li><NavLink href="/myprofile">My Profile</NavLink></li>
-  </>
-);
+    <>
+      <li>
+        <NavLink href="/">Home</NavLink>
+      </li>
+      <li>
+        <NavLink href="/allbooks">All Books</NavLink>
+      </li>
+      <li>
+        <NavLink href="/myprofile">My Profile</NavLink>
+      </li>
+    </>
+  );
+
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
 
   return (
     <div className="navbar bg-base-100 shadow-sm">
@@ -47,11 +59,36 @@ const NavBar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-4">{link}</ul>
       </div>
-      <Link href="/login" className="navbar-end">
-        <p className="btn bg-[linear-gradient(130deg,#2F5848,#A77E55)] text-white">
-          Login
-        </p>
-      </Link>
+      <div className="navbar-end">
+        {user ? (
+          <>
+            <div className="flex flex-col md:flex-row items-center gap-4 px-4 py-2 rounded-full  transition-all duration-300">
+              <Image
+                src={"https://cdn-icons-png.freepik.com/512/3135/3135715.png"}
+                alt={user.name || "img"}
+                width={45}
+                height={45}
+                className="rounded-full border-2 border-[#A77E55]"
+              />
+
+              <div className="flex flex-col leading-tight">
+                <p className="text-sm text-gray-500">Welcome back</p>
+                <h1 className="font-semibold text-[#2F5848]">{user.name}</h1>
+              </div>
+
+              <button className="ml-3 px-4 py-2 text-sm rounded-full bg-[linear-gradient(130deg,#2F5848,#A77E55)] text-white hover:scale-105 transition-all duration-200">
+                Logout
+              </button>
+            </div>
+          </>
+        ) : (
+          <Link href="/login" className="navbar-end">
+            <p className="btn bg-[linear-gradient(130deg,#2F5848,#A77E55)] text-white">
+              Login
+            </p>
+          </Link>
+        )}
+      </div>
     </div>
   );
 };
