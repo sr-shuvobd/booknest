@@ -1,56 +1,62 @@
+"use client";
+
 import Category from "@/component/book/Category";
 import Card from "@/component/shear/Card";
-import { allbooks, categories } from "@/lib/data";
-import React from "react";
+import { useEffect, useState } from "react";
 
-const AllbookPage = async() => {
- const books = await allbooks();
- const categorie = await categories()
+const AllbookPage = () => {
+
+  const [books, setBooks] = useState([]);
+  const [categorie, setCategorie] = useState([]);
+  const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    fetch("https://booknest-server-q5cs.onrender.com/books")
+      .then((res) => res.json())
+      .then((data) => setBooks(data));
+
+    fetch("https://booknest-server-q5cs.onrender.com/bookCategories")
+      .then((res) => res.json())
+      .then((data) => setCategorie(data));
+  }, []);
+
+  const filteredBooks = books.filter((book) =>
+    book.title.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <div className="container mx-auto m-7">
-        {/* search  */}
+
       <div className="flex items-center justify-center">
         <label className="input">
-          <svg
-            className="h-[1em] opacity-50"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-          >
-            <g
-              strokeLinejoin="round"
-              strokeLinecap="round"
-              strokeWidth="2.5"
-              fill="none"
-              stroke="currentColor"
-            >
-              <circle cx="11" cy="11" r="8"></circle>
-              <path d="m21 21-4.3-4.3"></path>
-            </g>
-          </svg>
-          <input type="search" required placeholder="Search" />
+          <input
+            type="search"
+            placeholder="Search"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
         </label>
       </div>
 
-      {/* book  */}
-        <div className="grid grid-cols-1 md:grid-cols-5 mt-10 gap-10">
-            {/* category */}
-            <div>
-              <Category categorie={categorie} activeId={null}/>
-            </div>
-            
-                {/* book  */}
-            <div className=" col-span-4 p-6 bg-gray-100">
-                <h1 className="text-xl font-bold mb-5">All Books</h1>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {
-                        books.map((book) => <Card key={book.id} book={book}/>)
-                    }
-                </div>
-            </div>
+      <div className="grid grid-cols-1 md:grid-cols-5 mt-10 gap-10">
 
+        <div>
+          <Category categorie={categorie} activeId={null} />
         </div>
+
+        <div className="col-span-4 p-6 bg-gray-50 rounded-2xl">
+          <h1 className="text-xl font-bold mb-5">All Books</h1>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {filteredBooks.map((book) => (
+              <Card key={book.id} book={book} />
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
+
 };
 
 export default AllbookPage;

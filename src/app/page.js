@@ -1,9 +1,8 @@
 import Card from "@/component/shear/Card";
 import { allbooks } from "@/lib/data";
 import Link from "next/link";
+import MemberShip from "@/component/shear/MemberShip";
 import Marquee from "react-fast-marquee";
-
-
 
 export default async function Home() {
   const books = await allbooks();
@@ -49,7 +48,7 @@ export default async function Home() {
         </div>
       </section>
       {/* marquee */}
-      <div className="container mx-auto text-2xl p-6 bg-green-300 m-2 rounded-xl">
+      <div className="container mx-auto text-2xl p-6 bg-green-300 m-5 rounded-xl">
         <Marquee pauseOnHover={true}>
           <p className="mr-10">
             এই, তোমরা কেমন আছো ? পড়াশোনা করোতো ? করতে হবে।
@@ -69,6 +68,24 @@ export default async function Home() {
           ))}
         </div>
       </div>
+      {/* membership */}
+      <div className="container mx-auto">
+        <MemberShip />
+      </div>
+          {/* discover */}
+      <div className="py-16 bg-gray-50 container mx-auto text-center rounded-xl mt-10">
+        <h2 className="text-3xl font-bold text-[#2F5848] mb-4">
+          📚 Discover the Power of Reading
+        </h2>
+        <p className="max-w-2xl mx-auto text-lg text-gray-700 mb-5">
+          “প্রতিটি বই তোমাকে নতুন এক জগতে নিয়ে যায়।”
+        </p>
+
+        <Link href="/allbooks" className="btn bg-[linear-gradient(130deg,#2F5848,#A77E55)] text-white rounded-4xl">
+          Explore Books
+        </Link>
+      </div>
+
     </div>
   );
 }
