@@ -8,7 +8,7 @@ const AllbookPage = async() => {
   return (
     <div className="container mx-auto m-7">
         {/* search  */}
-      <div>
+      <div className="flex items-center justify-center">
         <label className="input">
           <svg
             className="h-[1em] opacity-50"

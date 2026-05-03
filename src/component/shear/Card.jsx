@@ -14,7 +14,7 @@ const Card = ({book}) => {
         />
       </div>
             <h1 className='text-xl font-bold'>{book.title}</h1>
-            <Link href='/' className='btn bg-[linear-gradient(130deg,#2F5848,#A77E55)] text-white'>View Details</Link>
+            <Link href={`/details/${book.id}`} className='btn bg-[linear-gradient(130deg,#2F5848,#A77E55)] text-white'>View Details</Link>
         </div>
     );
 };
