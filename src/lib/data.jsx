@@ -15,3 +15,9 @@ export const bookdetails = async (id) => {
   const data = await les.json();
   return data;
 };
+
+export const category = async (id) => {
+  const les = await fetch(`https://booknest-server-q5cs.onrender.com/books?category_id=${id}`);
+  const data = await les.json();
+  return data;
+};

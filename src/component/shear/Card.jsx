@@ -8,7 +8,7 @@ const Card = ({book}) => {
              <div className='w-full h-110 relative'>
         <Image
           src={book.image_url}
-          alt='bb'
+          alt={book.title}
           fill
           className='rounded-xl object-cover'
         />
