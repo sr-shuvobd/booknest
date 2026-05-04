@@ -83,6 +83,7 @@ const RegisterPage = () => {
               className="input w-full"
               placeholder="Enter your Image URL"
             />
+            
           </fieldset>
           {errors.photo && (
             <p className="text-red-500">{errors.photo.message}</p>
