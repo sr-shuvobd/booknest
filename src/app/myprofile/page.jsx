@@ -22,7 +22,7 @@ const MyProfile = () => {
     <div className="md:min-h-screen flex items-center justify-center bg-[#FAF8F5] px-4">
       <div className="bg-white shadow-2xl rounded-3xl p-8 w-full max-w-sm text-center">
         <div className="flex justify-center">
-          
+
           <Image
             src={user.image || "https://cdn-icons-png.freepik.com/512/3135/3135715.png"}
             alt="profile"
@@ -39,9 +39,9 @@ const MyProfile = () => {
 
         <div className="border-t my-5"></div>
 
-        <button className="w-full py-2 rounded-full bg-[linear-gradient(130deg,#2F5848,#A77E55)] text-white font-semibold hover:scale-105 transition">
+        <Link href="/update" className="w-full py-2 rounded-full bg-[linear-gradient(130deg,#2F5848,#A77E55)] text-white font-semibold hover:scale-105 transition">
           Update Profile
-        </button>
+        </Link>
       </div>
     </div>
   );
