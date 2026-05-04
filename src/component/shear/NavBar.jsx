@@ -21,7 +21,7 @@ const NavBar = () => {
     </>
   );
 
-  const { data: session } = authClient.useSession();
+  const { data: session ,isPending } = authClient.useSession();
   const user = session?.user;
 
   return (
@@ -60,11 +60,11 @@ const NavBar = () => {
         <ul className="menu menu-horizontal px-1 gap-4">{link}</ul>
       </div>
       <div className="navbar-end">
-        {user ? (
+        {isPending? <span className="loading loading-spinner text-error"></span> : user ? (
           <>
             <div className="flex flex-col md:flex-row items-center gap-4 px-4 py-2 rounded-full  transition-all duration-300">
               <Image
-                src={"https://cdn-icons-png.freepik.com/512/3135/3135715.png"}
+                src={user.image || "https://cdn-icons-png.freepik.com/512/3135/3135715.png"}
                 alt={user.name || "img"}
                 width={45}
                 height={45}
@@ -76,7 +76,7 @@ const NavBar = () => {
                 <h1 className="font-semibold text-[#2F5848]">{user.name}</h1>
               </div>
 
-              <button className="ml-3 px-4 py-2 text-sm rounded-full bg-[linear-gradient(130deg,#2F5848,#A77E55)] text-white hover:scale-105 transition-all duration-200">
+              <button onClick={async ()=> await authClient.signOut()} className="ml-3 px-4 py-2 text-sm rounded-full bg-[linear-gradient(130deg,#2F5848,#A77E55)] text-white hover:scale-105 transition-all duration-200">
                 Logout
               </button>
             </div>

@@ -1,6 +1,7 @@
+import BorrowBtn from "@/component/shear/BorrowBtn";
 import { bookdetails } from "@/lib/data";
 import Image from "next/image";
-import Link from "next/link";
+import { toast } from "react-toastify";
 
 const DetailsPage = async ({ params }) => {
   const { id } = await params;
@@ -40,9 +41,7 @@ const DetailsPage = async ({ params }) => {
           </p>
 
           
-          <Link href="/" className="btn w-full bg-[linear-gradient(130deg,#2F5848,#A77E55)] text-white text-lg rounded-xl">
-            Borrow This Book
-          </Link>
+          <BorrowBtn/>
         </div>
 
       </div>
