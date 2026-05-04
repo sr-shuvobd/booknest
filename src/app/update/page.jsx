@@ -31,7 +31,7 @@ const UpdatePage = () => {
   };
 
   return (
-    <div className="md:min-h-screen flex justify-center items-center">
+    <div className="md:min-h-screen flex justify-center items-center bg-amber-50">
       <div className="shadow p-10 rounded-2xl">
         <h1 className="font-bold text-2xl mb-3">
           Update Your Profile Information
