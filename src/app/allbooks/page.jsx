@@ -24,6 +24,7 @@ const AllbookPage = () => {
     book.title.toLowerCase().includes(search.toLowerCase())
   );
 
+
   return (
     <div className="container mx-auto m-7">
 
@@ -37,6 +38,7 @@ const AllbookPage = () => {
           />
         </label>
       </div>
+
 
       <div className="grid grid-cols-1 md:grid-cols-5 mt-10 gap-10">
 
