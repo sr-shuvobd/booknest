@@ -69,6 +69,7 @@ const NavBar = () => {
                 width={45}
                 height={45}
                 className="rounded-full border-2 border-[#A77E55]"
+                onError={() => setImgSrc("/https://cdn-icons-png.freepik.com/512/3135/3135715.png")}
               />
 
               <div className="flex flex-col leading-tight">

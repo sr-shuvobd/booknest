@@ -34,6 +34,7 @@ const RegisterPage = () => {
     }
 
     if (res) {
+      await authClient.signOut();
       toast.success("Signup successful");
       router.push("/login");
     }
@@ -71,9 +72,15 @@ const RegisterPage = () => {
           <fieldset className="fieldset">
             <legend className="fieldset-legend ">Image URL</legend>
             <input
-              {...register("photo", { required: "Image URL is Required" })}
+              {...register("photo", {
+                required: "Image URL is Required",
+                pattern: {
+                  value: /^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|webp))$/i,
+                  message: "Please enter a valid image URL",
+                },
+              })}
               type="text"
-              className="input  w-full"
+              className="input w-full"
               placeholder="Enter your Image URL"
             />
           </fieldset>

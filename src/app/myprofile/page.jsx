@@ -22,12 +22,14 @@ const MyProfile = () => {
     <div className="md:min-h-screen flex items-center justify-center bg-[#FAF8F5] px-4">
       <div className="bg-white shadow-2xl rounded-3xl p-8 w-full max-w-sm text-center">
         <div className="flex justify-center">
+          
           <Image
-            src={user.image || "/default-avatar.png"}
+            src={user.image || "https://cdn-icons-png.freepik.com/512/3135/3135715.png"}
             alt="profile"
             width={120}
             height={120}
             className="rounded-full border-4 border-[#A77E55] object-cover"
+            onError={() => setImgSrc("/https://cdn-icons-png.freepik.com/512/3135/3135715.png")}
           />
         </div>
 
